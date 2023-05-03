@@ -18,8 +18,9 @@ def main():
         print("Taking photo")
         cmd("adb shell input keyevent 27")
     if config.is_remote:
-        print("Please connect your phone with usb")
+        print("Please connect your device with usb")
         cmd("pause")
+        print("Authorize usb debugging on your device")
         cmd("adb tcpip 5555")
         time.sleep(2)
         print("It is now ok to disconnect your device")
