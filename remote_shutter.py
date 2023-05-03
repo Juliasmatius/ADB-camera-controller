@@ -1,14 +1,14 @@
 import os
 import time
-from config import *
+import config
 def cmd(command):
     os.system(command)
 def open_photo():
     print("Opened camera")
-    cmd("adb shell am start -n "+activity_camera_name)
+    cmd("adb shell am start -n "+config.activity_camera_name)
 def open_video():
     print("Opened camera in video mode")
-    cmd("adb shell am start -n "+activity_video_camera_name)
+    cmd("adb shell am start -n "+config.activity_video_camera_name)
 def exity():
     print("Exiting")
     cmd("adb kill-server")
@@ -16,14 +16,14 @@ def exity():
 def take():
     print("Taking photo")
     cmd("adb shell input keyevent 27")
-if is_remote:
+if config.is_remote:
     print("Please connect your phone with usb")
     cmd("pause")
     cmd("adb tcpip 5555")
     time.sleep(2)
     print("It is now ok to disconnect your device")
     cmd("pause")
-    cmd("adb connect "+remote_ip)
+    cmd("adb connect "+config.remote_ip)
 else:
     cmd("adb start-server")
 from nicegui import ui
